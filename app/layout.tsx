@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Toaster } from 'sonner'
+import { BottomNav } from '@/components/ui/BottomNav';
 
 export const metadata: Metadata = {
   title: 'JARVIS - Context Resurrection',
@@ -14,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen bg-black antialiased" style={{ background: '#000000' }}>
+  <body className="min-h-screen bg-black antialiased">
         {children}
         <Toaster 
           theme="dark"
@@ -27,6 +28,7 @@ export default function RootLayout({
             },
           }}
         />
+        <BottomNav />
       </body>
     </html>
   )
