@@ -62,12 +62,24 @@ export const PatternCard: React.FC<PatternCardProps> = ({ pattern, onClick }) =>
   );
 
   return (
-    <motion.div
+      <motion.div
       whileHover={{ scale: 1.02, y: -4 }}
       whileTap={{ scale: 0.98 }}
       transition={{ ...motionTransition, hover: hoverSpring, tap: tapSpring }}
     >
-      <Card onClick={onClick} className="cursor-pointer h-full">
+      <Card
+        onClick={onClick}
+        className="cursor-pointer h-full focus:outline-none focus:ring-2 focus:ring-jarvis-cyan/60 focus:ring-offset-1"
+        role="button"
+        tabIndex={0}
+        aria-label={`Open pattern ${pattern.title}`}
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClick();
+          }
+        }}
+      >
         <div className="space-y-4">
           {/* Header */}
           <div className="flex items-start justify-between gap-3">
