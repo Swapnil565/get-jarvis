@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Container, PageLayout } from '@/components/ui';
 import { InterventionFeed } from '@/components/interventions/InterventionFeed';
@@ -57,6 +58,7 @@ const mockInterventions: Intervention[] = [
 
 export const InterventionsPage: React.FC = () => {
   const [interventions, setInterventions] = useState<Intervention[]>(mockInterventions);
+  const router = useRouter();
 
   const handleDismiss = (id: string) => {
     console.log('Dismissed intervention:', id);
@@ -90,7 +92,7 @@ export const InterventionsPage: React.FC = () => {
           <div className="flex items-center justify-between mb-2">
             <h1 className="heading-xl">Interventions 🤝</h1>
             <button
-              onClick={() => window.location.href = '/dashboard'}
+              onClick={() => router.push('/dashboard')}
               className="text-jarvis-gray hover:text-jarvis-cyan transition-colors text-sm"
             >
               ← Back to dashboard

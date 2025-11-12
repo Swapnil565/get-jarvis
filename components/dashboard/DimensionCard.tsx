@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui';
 import { motionTransition, hoverSpring } from '../../lib/motion';
@@ -20,6 +21,7 @@ export const DimensionCard: React.FC<DimensionCardProps> = ({
   insight,
   emoji
 }) => {
+  const router = useRouter();
   const dimensionConfig = {
     physical: {
       title: 'Physical',
@@ -53,7 +55,7 @@ export const DimensionCard: React.FC<DimensionCardProps> = ({
       whileHover={{ scale: 1.04 }}
       transition={{ ...hoverSpring, stiffness: 320 }}
     >
-      <Card className="cursor-pointer" onClick={() => window.location.href = `/insights?dimension=${dimension}`}>
+  <Card className="cursor-pointer" onClick={() => router.push(`/insights?dimension=${dimension}`)}>
         <div className="space-y-4">
           {/* Header */}
           <div className="flex items-center justify-between">
@@ -92,4 +94,9 @@ export const DimensionCard: React.FC<DimensionCardProps> = ({
       </Card>
     </motion.div>
   );
+};
+
+export default (props: DimensionCardProps) => {
+  const router = useRouter();
+  return <DimensionCard {...props} />;
 };

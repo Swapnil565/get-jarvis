@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Container, PageLayout, Button } from '@/components/ui';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
@@ -14,6 +15,7 @@ import { dashboardAPI, loggingAPI } from '@/lib/api';
 
 export const Dashboard: React.FC = () => {
   const [showMoodCheck, setShowMoodCheck] = useState(false);
+  const router = useRouter();
 
   // Fetch dashboard data with loading/error states
   const { data: dashboardData, loading, error, refetch } = useAPI(
@@ -99,7 +101,7 @@ export const Dashboard: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/progress'}
+                onClick={() => router.push('/progress')}
                 className="text-jarvis-gray hover:text-jarvis-cyan transition-colors relative"
                 title="View Progress"
               >
@@ -120,7 +122,7 @@ export const Dashboard: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/insights'}
+                onClick={() => router.push('/insights')}
                 className="text-jarvis-gray hover:text-jarvis-cyan transition-colors relative"
                 title="View Insights"
               >
@@ -144,7 +146,7 @@ export const Dashboard: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/interventions'}
+                onClick={() => router.push('/interventions')}
                 className="text-jarvis-gray hover:text-jarvis-cyan transition-colors relative"
                 title="Interventions"
               >
@@ -168,7 +170,7 @@ export const Dashboard: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/settings'}
+                onClick={() => router.push('/settings')}
                 className="text-jarvis-gray hover:text-jarvis-cyan transition-colors"
                 title="Settings"
               >
