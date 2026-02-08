@@ -27,6 +27,9 @@ const items = [
 export const BottomNav: React.FC = () => {
   const pathname = usePathname();
 
+  // Don't show navigation on the landing page or onboarding
+  if (pathname === '/' || pathname === '/onboarding') return null;
+
   return (
     <nav className="fixed bottom-4 left-0 right-0 z-50 flex justify-center pointer-events-none">
       <div className="pointer-events-auto glass-card rounded-full px-4 py-3 flex items-center gap-2 md:gap-6 overflow-x-auto max-w-[95vw]">
